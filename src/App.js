@@ -5,7 +5,7 @@ import { Route, useLocation } from 'react-router-dom';
 
 import BlankApp from './blank-app/BlankApp';
 import { NAV_ITEMS } from './constants/Navigation.js';
-import ConstructorSearchApp from './constructor-search-app/ConstructorSearchApp';
+import ConstructorSearchApp from './search-app/SearchApp';
 import TodoApp from './todo-app/Todo';
 
 function App() {

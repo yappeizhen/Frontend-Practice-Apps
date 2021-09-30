@@ -51,8 +51,8 @@ function ConstructorSearchApp() {
         <StyledPageContainer>
             <h1>Search Results for Apples</h1>
             <StyledDescription>
-                This page was created as part of an interview for Constructor.io. 
-                This page displays the search results for Apples derived from Constructor.io's search API.
+                This page was created as part of an interview. 
+                This page displays the search results for Apples derived from the given search API.
             </StyledDescription>
             <br/>
             <StyledCardContainer>
