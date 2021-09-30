@@ -1,13 +1,5 @@
-// import styled from 'styled-components'
-
-// Styled Components
-
 function BlankApp() {
-  
-  return (
-    <div>
-    </div>
-  );
+  return <></>;
 }
 
 export default BlankApp;

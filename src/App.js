@@ -5,6 +5,7 @@ import { Route, useLocation } from 'react-router-dom';
 
 import BlankApp from './blank-app/BlankApp';
 import { NAV_ITEMS } from './constants/Navigation.js';
+import ConstructorSearchApp from './constructor-search-app/ConstructorSearchApp';
 import TodoApp from './todo-app/Todo';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className="App">
       <Route path={NAV_ITEMS.TODO_APP.to} component={TodoApp} exact={true} />
+      <Route path={NAV_ITEMS.CONSTRUCTOR_APP.to} component={ConstructorSearchApp} exact={true} />
       <Route path={NAV_ITEMS.BLANK_APP.to} component={BlankApp} exact={true} />
       <Route path={'/'} component={TodoApp} exact={true} />
     </div>
