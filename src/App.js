@@ -19,7 +19,7 @@ function App() {
       <Route path={NAV_ITEMS.TODO_APP.to} component={TodoApp} exact={true} />
       <Route path={NAV_ITEMS.CONSTRUCTOR_APP.to} component={ConstructorSearchApp} exact={true} />
       <Route path={NAV_ITEMS.BLANK_APP.to} component={BlankApp} exact={true} />
-      <Route path={'/'} component={TodoApp} exact={true} />
+      <Route path={'/'} component={ConstructorSearchApp} exact={true} />
     </div>
   );
 }
