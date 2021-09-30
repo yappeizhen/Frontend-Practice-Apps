@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 
+import { useEffect } from 'react';
+import { Route, useLocation } from 'react-router-dom';
+
+import BlankApp from './blank-app/BlankApp';
+import { NAV_ITEMS } from './constants/Navigation.js';
+import TodoApp from './todo-app/Todo';
+
 function App() {
+  const pathname = useLocation().pathname;
+  useEffect(() => {
+    document.body.scrollTop = 0;
+  }, [pathname]);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route path={NAV_ITEMS.TODO_APP.to} component={TodoApp} exact={true} />
+      <Route path={NAV_ITEMS.BLANK_APP.to} component={BlankApp} exact={true} />
+      <Route path={'/'} component={TodoApp} exact={true} />
     </div>
   );
 }
