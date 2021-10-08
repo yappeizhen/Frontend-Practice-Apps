@@ -1,5 +1,5 @@
 function BlankApp() {
-  return <></>;
+  return <>Blank App Works!</>;
 }
 
 export default BlankApp;
