@@ -35,33 +35,59 @@ const StyledThumbnail = styled.img`
 const StyledDescription = styled.p`
     max-width: 80%;
     overflow-wrap: normal;
+    margin-bottom: 40px;
+`;
+const StyledInput = styled.input`
+    padding: 8px;
+`;
+const StyledSearchButton = styled.button`
+    padding: 8px
 `;
 
 function ConstructorSearchApp() {
     const [clientData, setClientData] = useState([]);
+    // const [searchSuggestions, setSearchSuggestions] = useState([]);
+    const [searchValue, setSearchValue] = useState('');
+    const [searchUrl, setSearchUrl] = useState('https://ac.cnstrc.com/search/a?key=key_fygjntHGW7usvxC8');
     useEffect(() => {
-        axios.get('https://ac.cnstrc.com/search/apple?key=key_fygjntHGW7usvxC8')
+        axios.get(searchUrl)
             .then((data) => {
                 const result = data.data.response.results ?? [];
                 setClientData(result);
             });
-    }, [clientData]);
-
+    }, [searchUrl]);
+    // useEffect(() => {
+    //     axios.get('https://ac.cnstrc.com/autocomplete/ap?key=key_fygjntHGW7usvxC8').then((data) => {
+    //         const result = data.data.sections["Search Suggestions"] ?? [];
+    //         console.log(result);
+    //         setSearchSuggestions(result);
+    //     });
+    // }, [searchValue]);
+    const handleSearchChange = (e) => {
+        setSearchValue(e.target.value);
+        console.log(searchValue);
+    }
+    const handleClickSearch = () => {
+        setSearchUrl(`https://ac.cnstrc.com/search/${searchValue.trim().toLowerCase()}?key=key_fygjntHGW7usvxC8`);
+    }
     return (
         <StyledPageContainer>
-            <h1>Search Results for Apples</h1>
+            <h1>Search Results</h1>
             <StyledDescription>
-                This page was created as part of an interview. 
-                This page displays the search results for Apples derived from the given search API.
+                This page displays the search results derived from the given API.
             </StyledDescription>
-            <br/>
+            <div>
+                <StyledInput type="text" id="searchbar" name="searchbar" value={searchValue} onChange={handleSearchChange} placeholder="Type your search value" ></StyledInput>
+                <StyledSearchButton type="submit" onClick={handleClickSearch}>Search!</StyledSearchButton>
+            </div>
+            <br />
             <StyledCardContainer>
                 {
                     clientData.map((item) => {
                         return (
                             <StyledCardDisplay key={item.data.id}>
                                 <div>{item.value}</div>
-                                <br/>
+                                <br />
                                 <StyledThumbnail style={{ float: "right" }} src={item.data.url} alt="search result" />
                             </StyledCardDisplay>
                         )
